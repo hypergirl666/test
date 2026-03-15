@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "digital-pmpo"
+version = "0.1.0"
+description = ""
+authors = ["you <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+
+aiogram = "3.21.0"
+aiohttp = "3.12.14"
+aiosqlite = "0.21.0"
+python-dotenv = "1.1.1"
+
+# Работа с БД и планировщиком задач
+psycopg = { version = "3.2.9", extras = ["binary", "pool"] }
+APScheduler = "3.11.0"
+pytz = "2024.1"
+
+# Работа с ML и LLM
+vosk = "0.3.45"
+langchain = "0.1.20"
+langchain-core = ">=0.1.33"
+langchain-openai = "0.1.0"
+yandex-cloud-ml-sdk = "0.3.0"
+
+# Работа с мультимедиа
+imageio-ffmpeg = "0.5.1"
+
+# Совместимость с Python 3.12
+typing-extensions = "4.12.0"
+
+[tool.poetry.group.dev.dependencies]
+
+# Линтеры и форматтеры
+black = "^24.0"
+isort = "^5.13"
+flake8 = "^7.0"
+
+# Тестирование
+pytest = "^8.4.2"
+pytest-asyncio = "^1.2.0"
+pytest-cov = "^7.0.0"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+combine_as_imports = true
+include_trailing_comma = true
+known_first_party = ["DTIS"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
